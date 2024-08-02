@@ -1,0 +1,443 @@
+/* styles.css */
+
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #e74c3c;
+  --accent-color: #f39c12;
+  --background-light: #f4f4f4;
+  --background-dark: #2c3e50;
+  --text-light: #333;
+  --text-dark: #ecf0f1;
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.App {
+  transition: var(--transition);
+}
+
+.App.light {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+.App.dark {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.header.light {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header.dark {
+  background-color: #34495e;
+  box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 50px;
+  margin-right: 1rem;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+}
+
+.header nav ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.header nav ul li {
+  margin: 0 1rem;
+}
+
+.header nav ul li a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+.header nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Landing Page Styles */
+.landing-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 10%;
+  min-height: calc(100vh - 80px);
+}
+
+.hero {
+  flex: 1;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: var(--transition);
+}
+
+.cta-button:hover {
+  background-color: #2980b9;
+}
+
+.hero-image {
+  flex: 1;
+  text-align: right;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Course Info Styles */
+.course-info {
+  padding: 5rem 10%;
+}
+
+.course-info h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.course-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: var(--transition);
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.course-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.course-card h3 {
+  padding: 1rem;
+}
+
+.course-card p {
+  padding: 0 1rem 1rem;
+}
+
+.enroll-button {
+  display: block;
+  width: 80%;
+  margin: 1rem auto;
+  padding: 0.8rem;
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: var(--transition);
+}
+
+.enroll-button:hover {
+  background-color: #c0392b;
+}
+
+/* Featured Instructors Styles */
+.featured-instructors {
+  padding: 5rem 10%;
+  background-color: #f9f9f9;
+}
+
+.featured-instructors h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.instructor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.instructor-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.instructor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.instructor-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.instructor-card h3 {
+  margin-top: 1rem;
+}
+
+.instructor-card p {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+/* Gallery Styles */
+.gallery {
+  padding: 5rem 10%;
+}
+
+.gallery h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1);
+}
+
+/* Testimonials Styles */
+.testimonials {
+  padding: 5rem 10%;
+  background-color: #f9f9f9;
+}
+
+.testimonials h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.testimonial-card p:first-child {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card h4 {
+  color: var(--primary-color);
+}
+
+/* Registration Form Styles */
+.registration-form {
+  padding: 5rem 10%;
+}
+
+.registration-form h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.registration-form form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-form input,
+.registration-form select,
+.registration-form textarea {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.registration-form textarea {
+  height: 150px;
+}
+
+.registration-form button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.registration-form button:hover {
+  background-color: #2980b9;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #34495e;
+  color: white;
+  padding: 3rem 10% 1rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-section ul {
+  list-style-type: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+  color: white;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-section a:hover {
+  color: var(--accent-color);
+}
+
+.social-links a {
+  margin-right: 1rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .header nav ul {
+    margin-top: 1rem;
+  }
+
+  .landing-page {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 5%;
+  }
+
+  .hero-image {
+    margin-top: 2rem;
+  }
+
+  .course-info,
+  .featured-instructors,
+  .gallery,
+  .testimonials,
+  .registration-form,
+  .footer {
+    padding: 3rem 5%;
+  }
+}

@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { ThemeProvider } from './context/ThemeContext';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import LandingPage from './components/LandingPage';
+import CourseInfo from './components/CourseInfo';
+import RegistrationForm from './components/RegistrationForm';
+import Gallery from './components/Gallery';
+import Testimonials from './components/Testimonials';
+import FeaturedInstructors from './components/FeaturedInstructors';
+import './styles.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <Header />
+        <LandingPage />
+        <CourseInfo />
+        <FeaturedInstructors />
+        <Gallery />
+        <Testimonials />
+        <RegistrationForm />
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 
