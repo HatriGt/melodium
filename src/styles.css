@@ -1,13 +1,15 @@
 /* styles.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 :root {
-  --primary-color: #3498db;
-  --secondary-color: #e74c3c;
-  --accent-color: #f39c12;
-  --background-light: #f4f4f4;
-  --background-dark: #2c3e50;
-  --text-light: #333;
-  --text-dark: #ecf0f1;
+  --primary-color: #6a11cb;
+  --secondary-color: #2575fc;
+  --accent-color: #ffa500;
+  --background-light: #f0f2f5;
+  --background-dark: #1a202c;
+  --text-light: #2d3748;
+  --text-dark: #e2e8f0;
   --transition: all 0.3s ease;
 }
 
@@ -18,7 +20,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   font-size: 16px;
 }
@@ -50,13 +52,15 @@ body {
 }
 
 .header.light {
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .header.dark {
-  background-color: #34495e;
-  box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+  background-color: rgba(26, 32, 44, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(255,255,255,0.1);
 }
 
 .logo {
@@ -64,13 +68,22 @@ body {
   align-items: center;
 }
 
-.logo img {
+#header-logo {
   width: 50px;
   margin-right: 1rem;
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .logo h1 {
   font-size: 1.5rem;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .header nav ul {
@@ -87,10 +100,22 @@ body {
   color: inherit;
   font-weight: bold;
   transition: var(--transition);
+  position: relative;
 }
 
-.header nav ul li a:hover {
-  color: var(--primary-color);
+.header nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: var(--transition);
+}
+
+.header nav ul li a:hover::after {
+  width: 100%;
 }
 
 .theme-toggle {
@@ -98,6 +123,11 @@ body {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
 }
 
 /* Landing Page Styles */
@@ -107,6 +137,8 @@ body {
   justify-content: space-between;
   padding: 5rem 10%;
   min-height: calc(100vh - 80px);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
 }
 
 .hero {
@@ -114,27 +146,46 @@ body {
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
+  animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
+  animation: fadeInUp 1s ease 0.2s;
+  animation-fill-mode: both;
 }
 
 .cta-button {
   display: inline-block;
-  padding: 0.8rem 1.5rem;
-  background-color: var(--primary-color);
-  color: white;
+  padding: 1rem 2rem;
+  background-color: var(--accent-color);
+  color: var(--text-light);
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 50px;
+  font-weight: bold;
   transition: var(--transition);
+  animation: fadeInUp 1s ease 0.4s;
+  animation-fill-mode: both;
 }
 
 .cta-button:hover {
-  background-color: #2980b9;
+  background-color: #ff8c00;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .hero-image {
@@ -144,18 +195,28 @@ body {
 
 .hero-image img {
   max-width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
 }
 
 /* Course Info Styles */
 .course-info {
   padding: 5rem 10%;
+  background-color: var(--background-light);
 }
 
 .course-info h2 {
   text-align: center;
   margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: var(--primary-color);
 }
 
 .course-grid {
@@ -166,25 +227,31 @@ body {
 
 .course-card {
   background-color: white;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   transition: var(--transition);
 }
 
 .course-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-10px) rotateZ(2deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 .course-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  transition: var(--transition);
+}
+
+.course-card:hover img {
+  transform: scale(1.1);
 }
 
 .course-card h3 {
   padding: 1rem;
+  color: var(--primary-color);
 }
 
 .course-card p {
@@ -200,23 +267,28 @@ body {
   color: white;
   text-align: center;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 50px;
+  font-weight: bold;
   transition: var(--transition);
 }
 
 .enroll-button:hover {
-  background-color: #c0392b;
+  background-color: var(--primary-color);
+  transform: scale(1.05);
 }
 
 /* Featured Instructors Styles */
 .featured-instructors {
   padding: 5rem 10%;
-  background-color: #f9f9f9;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
 }
 
 .featured-instructors h2 {
   text-align: center;
   margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: var(--accent-color);
 }
 
 .instructor-grid {
@@ -226,42 +298,51 @@ body {
 }
 
 .instructor-card {
-  background-color: white;
-  border-radius: 10px;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   text-align: center;
   transition: var(--transition);
 }
 
 .instructor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
 .instructor-card img {
   width: 100%;
   height: 250px;
   object-fit: cover;
+  transition: var(--transition);
+}
+
+.instructor-card:hover img {
+  transform: scale(1.1);
 }
 
 .instructor-card h3 {
   margin-top: 1rem;
+  color: var(--accent-color);
 }
 
 .instructor-card p {
-  color: var(--secondary-color);
+  color: var(--text-dark);
   margin-bottom: 1rem;
 }
 
 /* Gallery Styles */
 .gallery {
   padding: 5rem 10%;
+  background-color: var(--background-light);
 }
 
 .gallery h2 {
   text-align: center;
   margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: var(--primary-color);
 }
 
 .image-grid {
@@ -272,7 +353,8 @@ body {
 
 .gallery-item {
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .gallery-item img {
@@ -282,19 +364,21 @@ body {
   transition: var(--transition);
 }
 
-.gallery-item img:hover {
-  transform: scale(1.1);
+.gallery-item:hover img {
+  transform: scale(1.1) rotate(3deg);
 }
 
 /* Testimonials Styles */
 .testimonials {
   padding: 5rem 10%;
-  background-color: #f9f9f9;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
 }
 
 .testimonials h2 {
   text-align: center;
   margin-bottom: 3rem;
+  font-size: 2.5rem;
 }
 
 .testimonial-grid {
@@ -304,10 +388,17 @@ body {
 }
 
 .testimonial-card {
-  background-color: white;
-  border-radius: 10px;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
 .testimonial-card p:first-child {
@@ -316,17 +407,21 @@ body {
 }
 
 .testimonial-card h4 {
-  color: var(--primary-color);
+  color: var(--accent-color);
 }
 
 /* Registration Form Styles */
 .registration-form {
   padding: 5rem 10%;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
 }
 
 .registration-form h2 {
   text-align: center;
   margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: var(--accent-color);
 }
 
 .registration-form form {
@@ -334,16 +429,30 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  background-color: rgba(255,255,255,0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
 }
 
 .registration-form input,
 .registration-form select,
 .registration-form textarea {
   margin-bottom: 1rem;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
   font-size: 1rem;
+  background-color: rgba(255,255,255,0.1);
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.registration-form input:focus,
+.registration-form select:focus,
+.registration-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-color);
 }
 
 .registration-form textarea {
@@ -351,24 +460,27 @@ body {
 }
 
 .registration-form button {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--text-light);
   padding: 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
   transition: var(--transition);
 }
 
 .registration-form button:hover {
-  background-color: #2980b9;
+  background-color: #ff8c00;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* Footer Styles */
 .footer {
-  background-color: #34495e;
-  color: white;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
   padding: 3rem 10% 1rem;
 }
 
@@ -381,6 +493,7 @@ body {
 
 .footer-section h3 {
   margin-bottom: 1rem;
+  color: var(--accent-color);
 }
 
 .footer-section ul {
@@ -392,7 +505,7 @@ body {
 }
 
 .footer-section a {
-  color: white;
+  color: var(--text-dark);
   text-decoration: none;
   transition: var(--transition);
 }
@@ -401,8 +514,30 @@ body {
   color: var(--accent-color);
 }
 
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
 .social-links a {
-  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+.social-links img {
+  width: 20px;
+  height: 20px;
 }
 
 .footer-bottom {
@@ -411,7 +546,90 @@ body {
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Apply animations to elements */
+.hero h1 { animation: slideInFromLeft 1s ease-out; }
+.hero p { animation: slideInFromLeft 1s ease-out 0.2s; animation-fill-mode: both; }
+.cta-button { animation: scaleIn 0.5s ease-out 0.5s; animation-fill-mode: both; }
+.hero-image img { animation: slideInFromRight 1s ease-out; }
+
+.course-card, .instructor-card, .gallery-item, .testimonial-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+  position: relative;
+  opacity: 0;
+  transition: all 0.8s ease-in-out;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+.active.fade-left {
+  animation: fadeInLeft 1s ease-in-out;
+}
+
+.active.fade-right {
+  animation: fadeInRight 1s ease-in-out;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .landing-page, .course-info, .featured-instructors, .gallery, .testimonials, .registration-form, .footer {
+    padding: 4rem 5%;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -420,24 +638,154 @@ body {
 
   .header nav ul {
     margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .header nav ul li {
+    margin: 0.5rem;
   }
 
   .landing-page {
     flex-direction: column;
     text-align: center;
-    padding: 3rem 5%;
+  }
+
+  .hero, .hero-image {
+    flex: none;
+    width: 100%;
   }
 
   .hero-image {
     margin-top: 2rem;
   }
 
-  .course-info,
-  .featured-instructors,
-  .gallery,
-  .testimonials,
-  .registration-form,
-  .footer {
-    padding: 3rem 5%;
+  .course-grid, .instructor-grid, .testimonial-grid {
+    grid-template-columns: 1fr;
   }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .cta-button {
+    width: 100%;
+  }
+
+  .registration-form form {
+    padding: 1.5rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles for accessibility */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+.follow-us {
+  background-color: #1e2329;
+  padding: 2rem;
+  text-align: center;
+}
+
+.follow-us h2 {
+  color: #ffa500;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  background-color: #3a3a3a;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.social-icon span {
+  font-size: 0.9rem;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px);
+}
+
+.social-icon:hover .icon-circle {
+  background-color: #ffa500;
+}
+
+.logo img {
+  width: 50px; /* Adjust as needed */
+  height: auto;
+  margin-right: 10px; /* Space between logo and site name */
 }

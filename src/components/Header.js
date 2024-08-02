@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
+import headerLogo from '../images/Header/HeaderLogo.png';
+import wave from '../images/Header/Wave.gif';
 
 function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -7,8 +9,9 @@ function Header() {
   return (
     <header className={`header ${theme}`}>
       <div className="logo">
-        <img src="https://example.com/logo.png" alt="Melodious Harmony Logo" />
+        <img src={headerLogo} alt="Melodious Harmony Logo" id="header-logo" />
         <h1>Melodious Harmony</h1>
+        <img src={wave} alt="Wave" style={{ marginLeft: '10px' }} />
       </div>
       <nav>
         <ul>
