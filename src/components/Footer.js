@@ -6,9 +6,9 @@ function Footer() {
             <div className="footer-content">
                 <div className="footer-section">
                     <h3>Contact Us</h3>
-                    <p>Email: info@melodiousharmony.com</p>
-                    <p>Phone: +1 (123) 456-7890</p>
-                    <p>Address: 123 Music Street, Harmony City</p>
+                    <p>Email: madhumitha.balendar@gmail.com</p>
+                    <p>Phone: +971 545483401</p>
+                    <p>Address: Dubai, UAE</p>
                 </div>
                 <div className="footer-section">
                     <h3>Quick Links</h3>
