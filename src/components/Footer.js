@@ -23,7 +23,7 @@ function Footer() {
                     <div class="follow-us">
                         <h2>Follow Us</h2>
                         <div class="social-icons">
-                            <a href="#" class="social-icon facebook" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.facebook.com" class="social-icon facebook" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-facebook-f"></i>
                                 <span>Facebook</span>
                             </a>
@@ -31,7 +31,7 @@ function Footer() {
                                 <i class="fab fa-instagram"></i>
                                 <span>Instagram</span>
                             </a>
-                            <a href="#" class="social-icon youtube" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.youtube.com" class="social-icon youtube" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-youtube"></i>
                                 <span>YouTube</span>
                             </a>
