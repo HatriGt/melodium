@@ -280,8 +280,8 @@ body {
 /* Featured Instructors Styles */
 .featured-instructors {
   padding: 5rem 10%;
-  background-color: var(--background-dark);
-  color: var(--text-dark);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
 }
 
 .featured-instructors h2 {
@@ -292,44 +292,88 @@ body {
 }
 
 .instructor-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .instructor-card {
-  background-color: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  text-align: center;
-  transition: var(--transition);
-}
-
-.instructor-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
-
-.instructor-card img {
+  padding: 2rem;
+  max-width: 800px;
   width: 100%;
-  height: 250px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.instructor-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.instructor-image-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-right: 2rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.instructor-image-container:hover {
+  transform: scale(1.2);
+  z-index: 2;
+}
+
+.instructor-image-container video {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  transition: var(--transition);
+  border-radius: 50%;
 }
 
-.instructor-card:hover img {
-  transform: scale(1.1);
+.dotted-circle {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 3px dotted white;
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
 }
 
-.instructor-card h3 {
-  margin-top: 1rem;
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.instructor-info {
+  flex: 1;
+}
+
+.instructor-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
   color: var(--accent-color);
 }
 
-.instructor-card p {
-  color: var(--text-dark);
+.instructor-info .specialty {
+  font-style: italic;
   margin-bottom: 1rem;
+}
+
+.instructor-info .bio {
+  line-height: 1.6;
 }
 
 /* Gallery Styles */
@@ -373,41 +417,78 @@ body {
   padding: 5rem 10%;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
+  overflow: hidden;
 }
 
 .testimonials h2 {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   font-size: 2.5rem;
 }
 
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+.testimonial-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
 }
 
 .testimonial-card {
+  position: absolute;
+  width: calc(33.33% - 2rem);
+  max-width: 400px;
   background-color: rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 2rem;
+  border-radius: 30px;
+  padding: 1.5rem;
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   backdrop-filter: blur(10px);
-  transition: var(--transition);
+  transition: all 0.5s;
+  opacity: 0;
+  transform: scale(0.8);
 }
 
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+.testimonial-card.active {
+  opacity: 1;
+  transform: scale(1.1);
+  z-index: 2;
+  left: 55%;
+  transform: translateX(-50%) scale(1.1);
+}
+
+.testimonial-card.prev {
+  opacity: 0.7;
+  transform: scale(0.9);
+  left: 33;
+}
+
+.testimonial-card.next {
+  opacity: 0.7;
+  transform: scale(0.9);
+  right: 0;
 }
 
 .testimonial-card p:first-child {
   font-style: italic;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .testimonial-card h4 {
   color: var(--accent-color);
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 1024px) {
+  .testimonial-card {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    width: calc(100% - 2rem);
+  }
 }
 
 /* Registration Form Styles */
@@ -897,4 +978,57 @@ body.dark-mode .social-links a {
 
 body.dark-mode .social-links a:hover {
   background-color: #ffa500;
+}
+
+/* Add this to your CSS file */
+.hero, .hero-image, .hero h1, .hero p, .hero a {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero.fade-out h1,
+.hero.fade-out p,
+.hero.fade-out a {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+
+/* src/components/CourseInfo.css */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 37.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.progress-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #47079f;
+  width: 0;
+  transition: width 0.25s;
 }

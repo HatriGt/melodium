@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import LandingPage from './components/LandingPage';
 import CourseInfo from './components/CourseInfo';
 import RegistrationForm from './components/RegistrationForm';
-import Gallery from './components/Gallery';
+// import Gallery from './components/Gallery';
 import Testimonials from './components/Testimonials';
 import FeaturedInstructors from './components/FeaturedInstructors';
 import './styles.css';
@@ -34,7 +34,7 @@ function App() {
       </audio>
         <CourseInfo />
         <FeaturedInstructors />
-        <Gallery />
+        {/* <Gallery /> */}
         <Testimonials />
         <RegistrationForm />
         <Footer />
