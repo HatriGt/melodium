@@ -5,17 +5,17 @@ function CourseInfo() {
     {
       name: 'Carnatic Vocals',
       description: 'Master the ancient art of Carnatic music with our expert instructors.',
-      image: 'https://example.com/carnatic.jpg'
+      image: require('../images/CourseInfo/Carnatic.png')
     },
     {
       name: 'Tamil Film Songs',
       description: 'Learn to sing popular Tamil cinema melodies and express emotions through music.',
-      image: 'https://example.com/tamil.jpg'
+      image: require('../images/CourseInfo/TamilSingers1.png')
     },
     {
       name: 'English Pop',
       description: 'Explore contemporary English pop music and develop your unique style.',
-      image: 'https://example.com/english-pop.jpg'
+      video: require('../images/CourseInfo/EnglishPop.mp4') // Use a different key for video
     }
   ];
 
@@ -25,7 +25,15 @@ function CourseInfo() {
       <div className="course-grid">
         {courses.map((course, index) => (
           <div key={index} className="course-card">
-            <img src={course.image} alt={course.name} />
+            {course.image && <img src={course.image} alt={course.name} />}
+            {course.video && (
+              <div className="video-container">
+                <video controls autoPlay muted loop>
+                  <source src={course.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            )}
             <h3>{course.name}</h3>
             <p>{course.description}</p>
             <a href="#register" className="enroll-button">Enroll Now</a>

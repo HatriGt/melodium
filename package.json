@@ -8,11 +8,20 @@
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^7",
     "bootstrap": "^5.3.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.3.24",
+    "gsap": "^3.12.5",
+    "lucide-react": "^0.426.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
+    "react-scroll-parallax": "^3.4.5",
+    "react-select": "^5.8.0",
     "styled-components": "^6.1.12",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss-animate": "^1.0.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -38,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.9"
   }
 }
